@@ -64,6 +64,8 @@ public:
 
     virtual ~GameWindow() {}
 
+    virtual void makeContextCurrent() = 0;
+
     virtual void setIcon(std::string const& iconPath) = 0;
 
     virtual void show() = 0;
@@ -81,6 +83,8 @@ public:
     virtual void setClipboardText(std::string const& text) = 0;
 
     virtual void swapBuffers() = 0;
+
+    virtual void swapInterval(int interval) = 0;
 
     void setDrawCallback(DrawCallback callback) { drawCallback = std::move(callback); }
 

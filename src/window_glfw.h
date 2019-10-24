@@ -32,6 +32,8 @@ public:
 
     ~GLFWGameWindow() override;
 
+    void makeContextCurrent() override;
+
     void setIcon(std::string const& iconPath) override;
 
     int getRelativeScale() const;
@@ -53,5 +55,7 @@ public:
     void setClipboardText(std::string const& text) override;
 
     void swapBuffers() override;
+
+    void swapInterval(int interval) override;
 
 };

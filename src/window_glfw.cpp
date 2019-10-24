@@ -31,7 +31,6 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwSetKeyCallback(window, _glfwKeyCallback);
     glfwSetCharCallback(window, _glfwCharCallback);
     glfwSetWindowFocusCallback(window, _glfwWindowFocusCallback);
-    glfwMakeContextCurrent(window);
 
     setRelativeScale();
 }
@@ -39,6 +38,10 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
 GLFWGameWindow::~GLFWGameWindow() {
     GLFWJoystickManager::removeWindow(this);
     glfwDestroyWindow(window);
+}
+
+void GLFWGameWindow::makeContextCurrent() {
+    glfwMakeContextCurrent(window);
 }
 
 void GLFWGameWindow::setIcon(std::string const& iconPath) {
@@ -106,6 +109,11 @@ void GLFWGameWindow::setClipboardText(std::string const &text) {
 
 void GLFWGameWindow::swapBuffers() {
     glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+
+void GLFWGameWindow::swapInterval(int interval) {
+    glfwSwapInterval(interval);
 }
 
 void GLFWGameWindow::_glfwWindowSizeCallback(GLFWwindow* window, int w, int h) {
