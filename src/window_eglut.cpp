@@ -41,6 +41,10 @@ EGLUTWindow::~EGLUTWindow() {
         eglutDestroyWindow(winId);
 }
 
+void EGLUTWindow::makeContextCurrent(bool enable) {
+    eglutMakeCurrent(enable ? winId : 0);
+}
+
 void EGLUTWindow::setIcon(std::string const &iconPath) {
     eglutSetWindowIcon(iconPath.c_str());
 }
@@ -73,6 +77,10 @@ void EGLUTWindow::setFullscreen(bool fullscreen) {
 
 void EGLUTWindow::swapBuffers() {
     eglutSwapBuffers();
+}
+
+void EGLUTWindow::swapInterval(int interval) {
+    eglutSwapInterval(interval);
 }
 
 void EGLUTWindow::_eglutIdleFunc() {
