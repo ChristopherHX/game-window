@@ -42,7 +42,7 @@ EGLUTWindow::~EGLUTWindow() {
 }
 
 void EGLUTWindow::makeContextCurrent(bool enable) {
-    eglutMakeCurrent(enable ? winId : 0);
+    eglutMakeCurrent(enable ? winId : -1);
 }
 
 void EGLUTWindow::setIcon(std::string const &iconPath) {
