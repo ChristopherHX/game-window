@@ -162,11 +162,11 @@ int GLFWGameWindow::getKeyMinecraft(int keyCode) {
         return keyCode - GLFW_KEY_F1 + 112;
     switch (keyCode) {
         case GLFW_KEY_BACKSPACE:
-            return 67;
+            return 8;
         case GLFW_KEY_TAB:
-            return 61;
+            return 9;
         case GLFW_KEY_ENTER:
-            return 66;
+            return 13;
         case GLFW_KEY_LEFT_SHIFT:
         case GLFW_KEY_RIGHT_SHIFT:
             return 16;
@@ -176,17 +176,17 @@ int GLFWGameWindow::getKeyMinecraft(int keyCode) {
         case GLFW_KEY_PAUSE:
             return 19;
         case GLFW_KEY_CAPS_LOCK:
-            return 115;
+            return 20;
         case GLFW_KEY_ESCAPE:
-            return 111;
+            return 27;
         case GLFW_KEY_PAGE_UP:
-            return 92;
+            return 33;
         case GLFW_KEY_PAGE_DOWN:
-            return 93;
+            return 34;
         case GLFW_KEY_END:
-            return 123;
+            return 35;
         case GLFW_KEY_HOME:
-            return 112;
+            return 36;
         case GLFW_KEY_LEFT:
             return 37;
         case GLFW_KEY_UP:
@@ -198,33 +198,33 @@ int GLFWGameWindow::getKeyMinecraft(int keyCode) {
         case GLFW_KEY_INSERT:
             return 45;
         case GLFW_KEY_DELETE:
-            return 112;
+            return 46;
         case GLFW_KEY_NUM_LOCK:
             return 144;
         case GLFW_KEY_SCROLL_LOCK:
             return 145;
         case GLFW_KEY_SEMICOLON:
-            return 74;
+            return 186;
         case GLFW_KEY_EQUAL:
-            return 70;
+            return 187;
         case GLFW_KEY_COMMA:
-            return 55;
+            return 188;
         case GLFW_KEY_MINUS:
-            return 69;
+            return 189;
         case GLFW_KEY_PERIOD:
-            return 56;
+            return 190;
         case GLFW_KEY_SLASH:
-            return 76;
+            return 191;
         case GLFW_KEY_GRAVE_ACCENT:
-            return 68;
+            return 192;
         case GLFW_KEY_LEFT_BRACKET:
-            return 71;
+            return 219;
         case GLFW_KEY_BACKSLASH:
-            return 73;
+            return 220;
         case GLFW_KEY_RIGHT_BRACKET:
-            return 72;
+            return 221;
         case GLFW_KEY_APOSTROPHE:
-            return 65;
+            return 222;
 
             // Extra key mappings that are not necessarily correct but map to completely wrong keys otherwise
         case GLFW_KEY_LEFT_SUPER:

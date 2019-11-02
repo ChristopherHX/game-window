@@ -190,59 +190,44 @@ int EGLUTWindow::getKeyMinecraft(int keyCode) {
     if (keyCode == 65507 || keyCode == 65508) // left/right control
         return 17;
     if (keyCode == 65509) // caps lock
-        return 115;
+        return 20;
     if (keyCode == 65307) // esc
-        return 111;
+        return 27;
     if (keyCode == 65293) // enter
-        return 66;
-    if (keyCode >= 65365 && keyCode <= 65366) // pg up, pg down
-        return keyCode - 65365 + 92;
-    if (keyCode == 65366) // end
-        return 123;
+        return 13;
+    if (keyCode >= 65365 && keyCode <= 65367) // pg up, pg down, end
+        return keyCode - 65365 + 33;
     if (keyCode == 65360) // home
-        return 122;
+        return 36;
     if (keyCode == 65288) // backspace
-        return 67;
+        return 8;
     if (keyCode == 65289) // tab
-        return 61;
+        return 9;
     if (keyCode == 65535) // delete
-        return 112;
+        return 46;
     if (keyCode == 59) // ;
-        return 74;
+        return 186;
     if (keyCode == 61) // =
-        return 70;
-    if (keyCode == 44) // ,
-        return 55;
-    if (keyCode == 45) // -
-        return 69;
-    if (keyCode == 46) // .
-        return 56;
-    if (keyCode == 47) // /
-        return 76;
+        return 187;
+    if (keyCode >= 44 && keyCode <= 47) // ,-./
+        return keyCode - 44 + 188;
     if (keyCode == 96) // `
-        return 68;
-    if (keyCode == 91) // [
-        return 71;
-    if (keyCode == 92) // \ 
-        return 73;
-    if (keyCode == 93) // ]
-        return 72;
+        return 192;
+    if (keyCode >= 91 && keyCode <= 93) // [\]
+        return keyCode - 91 + 219;
     if (keyCode == 39) // '
-        return 65;
+        return 222;
     if (keyCode == 65515) // tab
-        return 61;
-    if (keyCode == 32) // space
-        return 62;
+        return 8;
     if (keyCode >= 97 && keyCode <= 122)
-        return (keyCode + 29 - 97);
+        return (keyCode + 65 - 97);
     if (keyCode >= 65361 && keyCode <= 65364)
         return (keyCode + 37 - 65361);
     if (keyCode >= 65470 && keyCode <= 65481)
         return (keyCode + 112 - 65470);
     if (keyCode >= 65456 && keyCode <= 65465) // numpad
         return (keyCode + 96 - 65456);
-    if (keyCode >= 48 && keyCode <= 57)
-        return (keyCode + 7 - 48);
+
     return keyCode;
 }
 
