@@ -31,6 +31,7 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwSetKeyCallback(window, _glfwKeyCallback);
     glfwSetCharCallback(window, _glfwCharCallback);
     glfwSetWindowFocusCallback(window, _glfwWindowFocusCallback);
+    glfwMakeContextCurrent(window);
 
     setRelativeScale();
 }
