@@ -34,6 +34,7 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwMakeContextCurrent(window);
 
     setRelativeScale();
+    GLFWJoystickManager::addWindow(this);
 }
 
 GLFWGameWindow::~GLFWGameWindow() {
@@ -76,7 +77,6 @@ void GLFWGameWindow::close() {
 }
 
 void GLFWGameWindow::runLoop() {
-    GLFWJoystickManager::addWindow(this);
     while (!glfwWindowShouldClose(window)) {
         auto drawStart = std::chrono::system_clock::now();
         GLFWJoystickManager::update(this);
@@ -111,6 +111,7 @@ void GLFWGameWindow::setClipboardText(std::string const &text) {
 void GLFWGameWindow::swapBuffers() {
     glfwSwapBuffers(window);
     glfwPollEvents();
+    GLFWJoystickManager::update(this);
 }
 
 void GLFWGameWindow::swapInterval(int interval) {
