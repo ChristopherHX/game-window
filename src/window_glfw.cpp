@@ -73,7 +73,7 @@ int GLFWGameWindow::getRelativeScale() const {
 
 void GLFWGameWindow::getWindowSize(int& width, int& height) const {
 #ifdef __APPLE__
-    if(relativescale == 1) {
+    if(relativeScale == 1) {
         glfwGetWindowSize(window, &width, &height);
         return;
     }
