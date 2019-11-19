@@ -38,7 +38,7 @@ public:
 
     int getRelativeScale() const;
 
-    void setRelativeScale();
+    void setRelativeScale(GraphicsApi api);
 
     void show() override;
 
