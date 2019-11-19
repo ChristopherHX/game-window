@@ -33,7 +33,7 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwSetWindowFocusCallback(window, _glfwWindowFocusCallback);
     glfwMakeContextCurrent(window);
 
-    setRelativeScale();
+    setRelativeScale(api);
     GLFWJoystickManager::addWindow(this);
 }
 
@@ -50,7 +50,14 @@ void GLFWGameWindow::setIcon(std::string const& iconPath) {
     // TODO:
 }
 
-void GLFWGameWindow::setRelativeScale() {
+void GLFWGameWindow::setRelativeScale(GraphicsApi api) {
+#ifdef __APPLE__
+    if(api == GraphicsApi::OPENGL_ES2) {
+        relativeScale = 1;
+        return;
+    }
+#endif
+
     int fx, fy;
     glfwGetFramebufferSize(window, &fx, &fy);
 
@@ -65,6 +72,13 @@ int GLFWGameWindow::getRelativeScale() const {
 }
 
 void GLFWGameWindow::getWindowSize(int& width, int& height) const {
+#ifdef __APPLE__
+    if(relativescale == 1) {
+        glfwGetWindowSize(window, &width, &height);
+        return;
+    }
+#endif
+
     glfwGetFramebufferSize(window, &width, &height);
 }
 
