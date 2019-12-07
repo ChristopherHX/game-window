@@ -34,7 +34,6 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwMakeContextCurrent(window);
 
     setRelativeScale();
-    GLFWJoystickManager::addWindow(this);
 }
 
 GLFWGameWindow::~GLFWGameWindow() {
@@ -76,7 +75,12 @@ void GLFWGameWindow::close() {
     glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
+void GLFWGameWindow::prepareRunLoop() {
+    GLFWJoystickManager::addWindow(this);
+}
+
 void GLFWGameWindow::runLoop() {
+    GLFWJoystickManager::addWindow(this);
     while (!glfwWindowShouldClose(window)) {
         auto drawStart = std::chrono::system_clock::now();
         GLFWJoystickManager::update(this);

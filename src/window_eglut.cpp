@@ -60,6 +60,10 @@ void EGLUTWindow::close() {
     currentWindow->winId = -1;
 }
 
+void EGLUTWindow::prepareRunLoop() {
+    addWindowToGamepadManager();
+}
+
 void EGLUTWindow::runLoop() {
     addWindowToGamepadManager();
     eglutMainLoop();

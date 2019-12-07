@@ -72,6 +72,8 @@ public:
 
     virtual void close() = 0;
 
+    virtual void prepareRunLoop() = 0;
+
     virtual void runLoop() = 0;
 
     virtual void setCursorDisabled(bool disabled) = 0;

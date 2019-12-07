@@ -44,6 +44,8 @@ public:
 
     void close() override;
 
+    void prepareRunLoop() override;
+
     void runLoop() override;
 
     void setCursorDisabled(bool disabled) override;
