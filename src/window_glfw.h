@@ -10,8 +10,11 @@ private:
     double lastMouseX = 0.0, lastMouseY = 0.0;
     int windowedX = -1, windowedY = -1;
     int windowedWidth = -1, windowedHeight = -1;
-    int relativeScale;
+    float relativeScale;
     bool focused = true;
+#ifdef __APPLE__
+    bool useAngle = false;
+#endif
 
     friend class GLFWJoystickManager;
 
@@ -25,6 +28,7 @@ private:
     static void _glfwCharCallback(GLFWwindow* window, unsigned int ch);
     static void _glfwWindowCloseCallback(GLFWwindow* window);
     static void _glfwWindowFocusCallback(GLFWwindow* window, int focused);
+    static void _glfwWindowContentScaleCallback(GLFWwindow* window, float scalex, float scaley);
 
 public:
 
@@ -36,7 +40,7 @@ public:
 
     void setIcon(std::string const& iconPath) override;
 
-    int getRelativeScale() const;
+    float getRelativeScale() const;
 
     void setRelativeScale();
 

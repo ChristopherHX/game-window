@@ -15,6 +15,9 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
         glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#ifdef __APPLE__
+        useAngle = true;
+#endif
     } else if (api == GraphicsApi::OPENGL) {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
@@ -31,6 +34,7 @@ GLFWGameWindow::GLFWGameWindow(const std::string& title, int width, int height, 
     glfwSetKeyCallback(window, _glfwKeyCallback);
     glfwSetCharCallback(window, _glfwCharCallback);
     glfwSetWindowFocusCallback(window, _glfwWindowFocusCallback);
+    glfwSetWindowContentScaleCallback(window, _glfwWindowContentScaleCallback);
     glfwMakeContextCurrent(window);
 
     setRelativeScale();
@@ -50,21 +54,32 @@ void GLFWGameWindow::setIcon(std::string const& iconPath) {
 }
 
 void GLFWGameWindow::setRelativeScale() {
-    int fx, fy;
-    glfwGetFramebufferSize(window, &fx, &fy);
+#ifdef __APPLE__
+    if(useAngle) {
+        relativeScale = 1;
+        return;
 
-    int wx, wy;
-    glfwGetWindowSize(window, &wx, &wy);
-
-    relativeScale = (int) floor(((fx / wx) + (fy / wy)) / 2);
+    }
+#endif
+    float scalex, scaley;
+    glfwGetWindowContentScale(window, &scalex, &scaley);
+    relativeScale = (scalex + scaley) / 2;
 }
 
-int GLFWGameWindow::getRelativeScale() const {
+float GLFWGameWindow::getRelativeScale() const {
     return relativeScale;
 }
 
 void GLFWGameWindow::getWindowSize(int& width, int& height) const {
     glfwGetFramebufferSize(window, &width, &height);
+#ifdef __APPLE__
+    if(useAngle) {
+        float scalex, scaley;
+        glfwGetWindowContentScale(window, &scalex, &scaley);
+        width /= scalex;
+        height /= scaley;
+    }
+#endif
 }
 
 void GLFWGameWindow::show() {
@@ -124,6 +139,14 @@ void GLFWGameWindow::swapInterval(int interval) {
 
 void GLFWGameWindow::_glfwWindowSizeCallback(GLFWwindow* window, int w, int h) {
     GLFWGameWindow* user = (GLFWGameWindow*) glfwGetWindowUserPointer(window);
+#ifdef __APPLE__
+    if(user->useAngle) {
+        float scalex, scaley;
+        glfwGetWindowContentScale(window, &scalex, &scaley);
+        user->onWindowSizeChanged(w / scalex, h / scaley);
+        return;
+    }
+#endif
     user->onWindowSizeChanged(w, h);
 }
 
@@ -279,4 +302,12 @@ void GLFWGameWindow::_glfwWindowFocusCallback(GLFWwindow* window, int focused) {
     GLFWGameWindow* user = (GLFWGameWindow*) glfwGetWindowUserPointer(window);
     GLFWJoystickManager::onWindowFocused(user, focused == GLFW_TRUE);
     user->focused = (focused == GLFW_TRUE);
+}
+
+void GLFWGameWindow::_glfwWindowContentScaleCallback(GLFWwindow* window, float scalex, float scaley) {
+    GLFWGameWindow* user = (GLFWGameWindow*) glfwGetWindowUserPointer(window);
+    user->setRelativeScale();
+    int width, height;
+    user->getWindowSize(width, height);
+    user->onWindowSizeChanged(width, height);
 }
