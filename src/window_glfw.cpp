@@ -42,10 +42,6 @@ GLFWGameWindow::~GLFWGameWindow() {
     glfwDestroyWindow(window);
 }
 
-void GLFWGameWindow::makeContextCurrent(bool enable) {
-    glfwMakeContextCurrent(enable ? window : 0);
-}
-
 void GLFWGameWindow::setIcon(std::string const& iconPath) {
     // TODO:
 }

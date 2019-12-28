@@ -42,8 +42,6 @@ public:
 
     ~EGLUTWindow() override;
 
-    void makeContextCurrent(bool enable) override;
-
     void setIcon(std::string const& iconPath) override;
 
     void show() override;

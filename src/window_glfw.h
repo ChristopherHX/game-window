@@ -33,8 +33,6 @@ public:
 
     ~GLFWGameWindow() override;
 
-    void makeContextCurrent(bool enable) override;
-
     void setIcon(std::string const& iconPath) override;
 
     int getRelativeScale() const;

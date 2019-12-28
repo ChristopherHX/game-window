@@ -41,10 +41,6 @@ EGLUTWindow::~EGLUTWindow() {
         eglutDestroyWindow(winId);
 }
 
-void EGLUTWindow::makeContextCurrent(bool enable) {
-    eglutMakeCurrent(enable ? winId : -1);
-}
-
 void EGLUTWindow::setIcon(std::string const &iconPath) {
     eglutSetWindowIcon(iconPath.c_str());
 }
