@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "window_manager_glfw.h"
 #include "window_glfw.h"
 #include "joystick_manager_glfw.h"
