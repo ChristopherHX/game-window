@@ -11,6 +11,7 @@ set(GAMEWINDOW_SOURCES_GLFW src/window_glfw.h src/window_glfw.cpp src/window_man
 
 add_library(gamewindow ${GAMEWINDOW_SOURCES})
 target_include_directories(gamewindow PUBLIC include/)
+target_include_directories(gamewindow PUBLIC ../glfw/include/)
 
 if (GAMEWINDOW_SYSTEM STREQUAL "EGLUT")
     target_sources(gamewindow PRIVATE ${GAMEWINDOW_SOURCES_EGLUT} ${GAMEWINDOW_SOURCES_LINUX_GAMEPAD})
