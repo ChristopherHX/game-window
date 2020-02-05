@@ -63,4 +63,6 @@ public:
     void swapBuffers() override;
 
     void swapInterval(int interval) override;
+    
+    void setKeyboardState(int state) override;
 };

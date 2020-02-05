@@ -86,6 +86,8 @@ public:
 
     virtual void swapInterval(int interval) = 0;
 
+    virtual void setKeyboardState(int state) {}
+
     void setDrawCallback(DrawCallback callback) { drawCallback = std::move(callback); }
 
     void setWindowSizeCallback(WindowSizeCallback callback) { windowSizeCallback = std::move(callback); }

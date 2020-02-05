@@ -169,7 +169,7 @@ void EGLUTWindow::_eglutTouchEndFunc(int id, double x, double y) {
     currentWindow->releaseTouchPointer(ourId);
 }
 
-void EGLUTWindow::_eglutKeyboardFunc(char str[5], int action) {
+void EGLUTWindow::_eglutKeyboardFunc(char* str, int action) {
     if (currentWindow == nullptr ||
         strcmp(str, "\t") == 0 || strcmp(str, "\03") == 0 || strcmp(str, "\26") == 0 ||
         strcmp(str, "\33") == 0) // \t, copy, paste, esc
@@ -270,4 +270,8 @@ void EGLUTWindow::getWindowSize(int& width, int& height) const {
 
 void EGLUTWindow::setClipboardText(std::string const &text) {
     eglutSetClipboardText(text.c_str());
+}
+
+void EGLUTWindow::setKeyboardState(int state) {
+    eglutSetKeyboardState(state);
 }
