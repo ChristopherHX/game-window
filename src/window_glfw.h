@@ -57,6 +57,8 @@ public:
 
     void swapBuffers() override;
 
+    void pollEvents() override;
+
     void swapInterval(int interval) override;
 
 };

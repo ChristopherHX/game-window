@@ -84,6 +84,8 @@ public:
 
     virtual void swapBuffers() = 0;
 
+    virtual void pollEvents() = 0;
+
     virtual void swapInterval(int interval) = 0;
 
     virtual void setKeyboardState(int state) {}

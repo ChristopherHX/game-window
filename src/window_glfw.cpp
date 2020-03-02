@@ -111,6 +111,9 @@ void GLFWGameWindow::setClipboardText(std::string const &text) {
 
 void GLFWGameWindow::swapBuffers() {
     glfwSwapBuffers(window);
+}
+
+void GLFWGameWindow::pollEvents() {
     glfwPollEvents();
     GLFWJoystickManager::update(this);
 }

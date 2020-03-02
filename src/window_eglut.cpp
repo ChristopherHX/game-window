@@ -77,6 +77,9 @@ void EGLUTWindow::setFullscreen(bool fullscreen) {
 
 void EGLUTWindow::swapBuffers() {
     eglutSwapBuffers();
+}
+
+void EGLUTWindow::pollEvents() {
     eglutPollEvents();
 }
 
