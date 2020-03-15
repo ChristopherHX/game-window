@@ -278,7 +278,7 @@ void GLFWGameWindow::_glfwWindowCloseCallback(GLFWwindow* window) {
 void GLFWGameWindow::_glfwWindowFocusCallback(GLFWwindow* window, int focused) {
     GLFWGameWindow* user = (GLFWGameWindow*) glfwGetWindowUserPointer(window);
     GLFWJoystickManager::onWindowFocused(user, focused == GLFW_TRUE);
-    user->focused = (focused == GLFW_TRUE);
+    user->onFocusChange(user->focused = (focused == GLFW_TRUE));
 }
 
 void GLFWGameWindow::_glfwWindowContentScaleCallback(GLFWwindow* window, float scalex, float scaley) {

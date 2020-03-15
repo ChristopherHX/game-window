@@ -258,6 +258,7 @@ void EGLUTWindow::_eglutFocusFunc(int action) {
     if (currentWindow == nullptr)
         return;
     LinuxGamepadJoystickManager::instance.onWindowFocused(currentWindow, (action == EGLUT_FOCUSED));
+    currentWindow->onFocusChange(action == EGLUT_FOCUSED);
 }
 
 void EGLUTWindow::_eglutCloseWindowFunc() {

@@ -40,6 +40,7 @@ public:
     using GamepadButtonCallback = std::function<void (int, GamepadButtonId, bool)>;
     using GamepadAxisCallback = std::function<void (int, GamepadAxisId, float)>;
     using CloseCallback = std::function<void ()>;
+    using FocusChangeCallback = std::function<void (bool)>;
 
 private:
     DrawCallback drawCallback;
@@ -57,6 +58,7 @@ private:
     GamepadButtonCallback gamepadButtonCallback;
     GamepadAxisCallback gamepadAxisCallback;
     CloseCallback closeCallback;
+    FocusChangeCallback focusChangeCallback;
 
 public:
 
@@ -122,6 +124,8 @@ public:
     void setGamepadAxisCallback(GamepadAxisCallback callback) { gamepadAxisCallback = std::move(callback); }
 
     void setCloseCallback(CloseCallback callback) { closeCallback = std::move(callback); }
+
+    void setFocusChangeCallback(FocusChangeCallback callback) { focusChangeCallback = std::move(callback); }
 
 
 protected:
@@ -191,4 +195,8 @@ protected:
             closeCallback();
     }
 
+    void onFocusChange(bool hasfocus) {
+        if (focusChangeCallback != nullptr)
+            focusChangeCallback(hasfocus);
+    }
 };
