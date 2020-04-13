@@ -15,7 +15,7 @@ private:
 
     friend class GLFWJoystickManager;
 
-    static KeyCode getKeyMinecraft(int keyCode);
+    static mapping::KeyCode getKeyMinecraft(int keyCode);
 
     static void _glfwWindowSizeCallback(GLFWwindow* window, int w, int h);
     static void _glfwCursorPosCallback(GLFWwindow* window, double x, double y);

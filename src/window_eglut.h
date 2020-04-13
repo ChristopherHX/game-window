@@ -17,7 +17,7 @@ private:
     bool modCTRL = false;
     int pointerIds[16];
 
-    static KeyCode getKeyMinecraft(int keyCode);
+    static mapping::KeyCode getKeyMinecraft(int keyCode);
 
     static void _eglutIdleFunc();
     static void _eglutDisplayFunc();

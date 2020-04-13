@@ -180,55 +180,55 @@ void EGLUTWindow::_eglutKeyboardFunc(char str[5], int action) {
     }
 }
 
-KeyCode EGLUTWindow::getKeyMinecraft(int keyCode) {
+mapping::KeyCode EGLUTWindow::getKeyMinecraft(int keyCode) {
     if (keyCode >= XK_A && keyCode <= XK_Z)
-        return (KeyCode) (keyCode - XK_A + (int) KeyCode::A);
+        return (mapping::KeyCode) (keyCode - XK_A + (int) mapping::KeyCode::A);
     if (keyCode >= XK_a && keyCode <= XK_z)
-        return (KeyCode) (keyCode - XK_a + (int) KeyCode::A);
+        return (mapping::KeyCode) (keyCode - XK_a + (int) mapping::KeyCode::A);
     if (keyCode >= XK_F1 && keyCode <= XK_F12)
-        return (KeyCode) (keyCode - XK_F1 + (int) KeyCode::FN1);
+        return (mapping::KeyCode) (keyCode - XK_F1 + (int) mapping::KeyCode::FN1);
     if (keyCode >= XK_KP_0 && keyCode <= XK_KP_9)
-        return (KeyCode) (keyCode - XK_KP_0 + 96);
+        return (mapping::KeyCode) (keyCode - XK_KP_0 + 96);
 
     switch (keyCode) {
-        case XK_BackSpace: return KeyCode::BACKSPACE;
-        case XK_Tab: return KeyCode::TAB;
-        case XK_Return: return KeyCode::ENTER;
-        case XK_Shift_L: return KeyCode::LEFT_SHIFT;
-        case XK_Shift_R: return KeyCode::RIGHT_SHIFT;
-        case XK_Control_L: return KeyCode::LEFT_CTRL;
-        case XK_Control_R: return KeyCode::RIGHT_CTRL;
-        case XK_Pause: return KeyCode::PAUSE;
-        case XK_Caps_Lock: return KeyCode::CAPS_LOCK;
-        case XK_Escape: return KeyCode::ESCAPE;
-        case XK_Page_Up: return KeyCode::PAGE_UP;
-        case XK_Page_Down: return KeyCode::PAGE_DOWN;
-        case XK_End: return KeyCode::END;
-        case XK_Home: return KeyCode::HOME;
-        case XK_Left: return KeyCode::LEFT;
-        case XK_Up: return KeyCode::UP;
-        case XK_Right: return KeyCode::RIGHT;
-        case XK_Down: return KeyCode::DOWN;
-        case XK_Insert: return KeyCode::INSERT;
-        case XK_Delete: return KeyCode::DELETE;
-        case XK_Num_Lock: return KeyCode::NUM_LOCK;
-        case XK_Scroll_Lock: return KeyCode::SCROLL_LOCK;
-        case XK_semicolon: return KeyCode::SEMICOLON;
-        case XK_equal: return KeyCode::EQUAL;
-        case XK_comma: return KeyCode::COMMA;
-        case XK_minus: return KeyCode::MINUS;
-        case XK_period: return KeyCode::PERIOD;
-        case XK_slash: return KeyCode::SLASH;
-        case XK_grave: return KeyCode::GRAVE;
-        case XK_bracketleft: return KeyCode::LEFT_BRACKET;
-        case XK_backslash: return KeyCode::BACKSLASH;
-        case XK_bracketright: return KeyCode::RIGHT_BRACKET;
-        case XK_apostrophe: return KeyCode::APOSTROPHE;
+        case XK_BackSpace: return mapping::KeyCode::BACKSPACE;
+        case XK_Tab: return mapping::KeyCode::TAB;
+        case XK_Return: return mapping::KeyCode::ENTER;
+        case XK_Shift_L: return mapping::KeyCode::LEFT_SHIFT;
+        case XK_Shift_R: return mapping::KeyCode::RIGHT_SHIFT;
+        case XK_Control_L: return mapping::KeyCode::LEFT_CTRL;
+        case XK_Control_R: return mapping::KeyCode::RIGHT_CTRL;
+        case XK_Pause: return mapping::KeyCode::PAUSE;
+        case XK_Caps_Lock: return mapping::KeyCode::CAPS_LOCK;
+        case XK_Escape: return mapping::KeyCode::ESCAPE;
+        case XK_Page_Up: return mapping::KeyCode::PAGE_UP;
+        case XK_Page_Down: return mapping::KeyCode::PAGE_DOWN;
+        case XK_End: return mapping::KeyCode::END;
+        case XK_Home: return mapping::KeyCode::HOME;
+        case XK_Left: return mapping::KeyCode::LEFT;
+        case XK_Up: return mapping::KeyCode::UP;
+        case XK_Right: return mapping::KeyCode::RIGHT;
+        case XK_Down: return mapping::KeyCode::DOWN;
+        case XK_Insert: return mapping::KeyCode::INSERT;
+        case XK_Delete: return mapping::KeyCode::DELETE;
+        case XK_Num_Lock: return mapping::KeyCode::NUM_LOCK;
+        case XK_Scroll_Lock: return mapping::KeyCode::SCROLL_LOCK;
+        case XK_semicolon: return mapping::KeyCode::SEMICOLON;
+        case XK_equal: return mapping::KeyCode::EQUAL;
+        case XK_comma: return mapping::KeyCode::COMMA;
+        case XK_minus: return mapping::KeyCode::MINUS;
+        case XK_period: return mapping::KeyCode::PERIOD;
+        case XK_slash: return mapping::KeyCode::SLASH;
+        case XK_grave: return mapping::KeyCode::GRAVE;
+        case XK_bracketleft: return mapping::KeyCode::LEFT_BRACKET;
+        case XK_backslash: return mapping::KeyCode::BACKSLASH;
+        case XK_bracketright: return mapping::KeyCode::RIGHT_BRACKET;
+        case XK_apostrophe: return mapping::KeyCode::APOSTROPHE;
     }
 
     if (keyCode < 256)
-        return (KeyCode) keyCode;
-    return KeyCode::UNKNOWN;
+        return (mapping::KeyCode) keyCode;
+    return mapping::KeyCode::UNKNOWN;
 }
 
 void EGLUTWindow::_eglutKeyboardSpecialFunc(int key, int action) {
@@ -239,7 +239,7 @@ void EGLUTWindow::_eglutKeyboardSpecialFunc(int key, int action) {
     if (currentWindow->modCTRL && (key == 86 || key == 118) && action == EGLUT_KEY_PRESS) {
         eglutRequestPaste();
     }
-    KeyCode mKey = getKeyMinecraft(key);
+    mapping::KeyCode mKey = getKeyMinecraft(key);
     KeyAction enumAction = (action == EGLUT_KEY_PRESS ? KeyAction::PRESS :
                             (action == EGLUT_KEY_REPEAT ? KeyAction::REPEAT : KeyAction::RELEASE));
     currentWindow->onKeyboard(mKey, enumAction);

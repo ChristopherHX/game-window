@@ -148,89 +148,89 @@ void GLFWGameWindow::_glfwScrollCallback(GLFWwindow* window, double x, double y)
     user->onMouseScroll(cx, cy, x, y);
 }
 
-KeyCode GLFWGameWindow::getKeyMinecraft(int keyCode) {
+mapping::KeyCode GLFWGameWindow::getKeyMinecraft(int keyCode) {
     if (keyCode >= GLFW_KEY_F1 && keyCode <= GLFW_KEY_F12)
-        return (KeyCode) (keyCode - GLFW_KEY_F1 + (int) KeyCode::FN1);
+        return (mapping::KeyCode) (keyCode - GLFW_KEY_F1 + (int) mapping::KeyCode::FN1);
     switch (keyCode) {
         case GLFW_KEY_BACKSPACE:
-            return KeyCode::BACKSPACE;
+            return mapping::KeyCode::BACKSPACE;
         case GLFW_KEY_TAB:
-            return KeyCode::TAB;
+            return mapping::KeyCode::TAB;
         case GLFW_KEY_ENTER:
-            return KeyCode::ENTER;
+            return mapping::KeyCode::ENTER;
         case GLFW_KEY_LEFT_SHIFT:
-            return KeyCode::LEFT_SHIFT;
+            return mapping::KeyCode::LEFT_SHIFT;
         case GLFW_KEY_RIGHT_SHIFT:
-            return KeyCode::RIGHT_SHIFT;
+            return mapping::KeyCode::RIGHT_SHIFT;
         case GLFW_KEY_LEFT_CONTROL:
-            return KeyCode::LEFT_CTRL;
+            return mapping::KeyCode::LEFT_CTRL;
         case GLFW_KEY_RIGHT_CONTROL:
-            return KeyCode::RIGHT_CTRL;
+            return mapping::KeyCode::RIGHT_CTRL;
         case GLFW_KEY_PAUSE:
-            return KeyCode::PAUSE;
+            return mapping::KeyCode::PAUSE;
         case GLFW_KEY_CAPS_LOCK:
-            return KeyCode::CAPS_LOCK;
+            return mapping::KeyCode::CAPS_LOCK;
         case GLFW_KEY_ESCAPE:
-            return KeyCode::ESCAPE;
+            return mapping::KeyCode::ESCAPE;
         case GLFW_KEY_PAGE_UP:
-            return KeyCode::PAGE_UP;
+            return mapping::KeyCode::PAGE_UP;
         case GLFW_KEY_PAGE_DOWN:
-            return KeyCode::PAGE_DOWN;
+            return mapping::KeyCode::PAGE_DOWN;
         case GLFW_KEY_END:
-            return KeyCode::END;
+            return mapping::KeyCode::END;
         case GLFW_KEY_HOME:
-            return KeyCode::HOME;
+            return mapping::KeyCode::HOME;
         case GLFW_KEY_LEFT:
-            return KeyCode::LEFT;
+            return mapping::KeyCode::LEFT;
         case GLFW_KEY_UP:
-            return KeyCode::UP;
+            return mapping::KeyCode::UP;
         case GLFW_KEY_RIGHT:
-            return KeyCode::RIGHT;
+            return mapping::KeyCode::RIGHT;
         case GLFW_KEY_DOWN:
-            return KeyCode::DOWN;
+            return mapping::KeyCode::DOWN;
         case GLFW_KEY_INSERT:
-            return KeyCode::INSERT;
+            return mapping::KeyCode::INSERT;
         case GLFW_KEY_DELETE:
-            return KeyCode::DELETE;
+            return mapping::KeyCode::DELETE;
         case GLFW_KEY_NUM_LOCK:
-            return KeyCode::NUM_LOCK;
+            return mapping::KeyCode::NUM_LOCK;
         case GLFW_KEY_SCROLL_LOCK:
-            return KeyCode::SCROLL_LOCK;
+            return mapping::KeyCode::SCROLL_LOCK;
         case GLFW_KEY_SEMICOLON:
-            return KeyCode::SEMICOLON;
+            return mapping::KeyCode::SEMICOLON;
         case GLFW_KEY_EQUAL:
-            return KeyCode::EQUAL;
+            return mapping::KeyCode::EQUAL;
         case GLFW_KEY_COMMA:
-            return KeyCode::COMMA;
+            return mapping::KeyCode::COMMA;
         case GLFW_KEY_MINUS:
-            return KeyCode::MINUS;
+            return mapping::KeyCode::MINUS;
         case GLFW_KEY_PERIOD:
-            return KeyCode::PERIOD;
+            return mapping::KeyCode::PERIOD;
         case GLFW_KEY_SLASH:
-            return KeyCode::SLASH;
+            return mapping::KeyCode::SLASH;
         case GLFW_KEY_GRAVE_ACCENT:
-            return KeyCode::GRAVE;
+            return mapping::KeyCode::GRAVE;
         case GLFW_KEY_LEFT_BRACKET:
-            return KeyCode::LEFT_BRACKET;
+            return mapping::KeyCode::LEFT_BRACKET;
         case GLFW_KEY_BACKSLASH:
-            return KeyCode::BACKSLASH;
+            return mapping::KeyCode::BACKSLASH;
         case GLFW_KEY_RIGHT_BRACKET:
-            return KeyCode::RIGHT_BRACKET;
+            return mapping::KeyCode::RIGHT_BRACKET;
         case GLFW_KEY_APOSTROPHE:
-            return KeyCode::APOSTROPHE;
+            return mapping::KeyCode::APOSTROPHE;
 
         case GLFW_KEY_LEFT_SUPER:
-            return KeyCode::LEFT_SUPER;
+            return mapping::KeyCode::LEFT_SUPER;
         case GLFW_KEY_RIGHT_SUPER:
-            return KeyCode::RIGHT_SUPER;
+            return mapping::KeyCode::RIGHT_SUPER;
         case GLFW_KEY_LEFT_ALT:
-            return KeyCode::LEFT_ALT;
+            return mapping::KeyCode::LEFT_ALT;
         case GLFW_KEY_RIGHT_ALT:
-            return KeyCode::RIGHT_ALT;
+            return mapping::KeyCode::RIGHT_ALT;
     }
     if (keyCode < 256)
-        return (KeyCode) keyCode;
-    return KeyCode::UNKNOWN;
+        return (mapping::KeyCode) keyCode;
+    return mapping::KeyCode::UNKNOWN;
 }
 
 void GLFWGameWindow::_glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
